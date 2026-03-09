@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost2Found - Connect Lost Items with Owners</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="brand">
+            LOST2FOUND
+        </a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="view-items.html">View Items</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>Lost Something? Found Something?
+            </h1>
+            <p>
+                The easiest and smartest way to manage lost items on campus. Report, browse, and connect securely.
+            </p>
+            <div class="cta-group">
+                <a href="register.html" class="btn btn-primary">Get
+                    Started</a>
+                <a href="view-items.html" class="btn btn-outline">View
+                    Items</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="grid-container features-section">
+            <div class="stat-card feature-card">
+                <div class="stat-icon feature-icon">⚡
+                </div>
+                <h3>Report Instantly</h3>
+                <p>Upload photos and details in seconds.</p>
+            </div>
+
+            <div class="stat-card feature-card">
+                <div class="stat-icon feature-icon info">🎯</div>
+                <h3>Smart Matching</h3>
+                <p>Automated suggestions based on locations and
+                    categories.</p>
+            </div>
+
+            <div class="stat-card feature-card">
+                <div class="stat-icon feature-icon verify">🛡️</div>
+                <h3>Admin Verified</h3>
+                <p>Secure platform overseen by administration.</p>
+            </div>
+
+            <div class="stat-card feature-card">
+                <div class="stat-icon feature-icon success">🏃
+                </div>
+                <h3>Fast Recovery</h3>
+                <p>Direct contact to retrieve your belongings
+                    easily.</p>
+            </div>
+        </section>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+
+        // Dynamic Navbar Auth
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.api && window.api.getToken()) {
+                const user = window.api.getUser();
+                const navLinks = document.getElementById('nav-links');
+
+                // Keep 'Home' but map to Dashboard when clicked, or explicitly replace Login/Register
+                navLinks.innerHTML = `
+                    <li><a href="${user && user.role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html'}" class="active">Home</a></li>
+                    <li><a href="view-items.html">View Items</a></li>
+                    <li><a href="${user && user.role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html'}">Dashboard</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                `;
+
+                document.getElementById('logout-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.api.logout();
+                });
+
+                // Handle brand link
+                document.querySelector('.brand').href = user && user.role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+
+                // Handle hero section buttons
+                const ctaBtn = document.querySelector('.btn-primary');
+                if (ctaBtn) {
+                    ctaBtn.textContent = 'Go to Dashboard';
+                    ctaBtn.href = user && user.role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

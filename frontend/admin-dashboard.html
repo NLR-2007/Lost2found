@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Lost2Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body style="background-color: #F1F5F9;">
+
+    <header>
+        <a href="admin-dashboard.html" class="brand">L2F ADMIN</a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="view-items.html">View Items</a></li>
+            <li><a href="matches.html">Matches</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-container" style="max-width: 1200px;">
+        <h2 style="margin-bottom: 2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem;">System Overview</h2>
+
+        <div class="stat-cards">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-details">
+                    <h3>Total Users</h3>
+                    <div class="num" id="stat-users">0</div>
+                </div>
+            </div>
+            <div class="stat-card lost">
+                <div class="stat-icon">🔍</div>
+                <div class="stat-details">
+                    <h3>Active Lost Items</h3>
+                    <div class="num" id="stat-lost">0</div>
+                </div>
+            </div>
+            <div class="stat-card found">
+                <div class="stat-icon">📣</div>
+                <div class="stat-details">
+                    <h3>Active Found Items</h3>
+                    <div class="num" id="stat-found">0</div>
+                </div>
+            </div>
+            <div class="stat-card recovered">
+                <div class="stat-icon">🎉</div>
+                <div class="stat-details">
+                    <h3>Total Recovered</h3>
+                    <div class="num" id="stat-recovered">0</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 1rem;">Registered Users</h2>
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead style="background-color: #CBD5E0;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Joined Date</th>
+                        <th>Lost Count</th>
+                        <th>Found Count</th>
+                        <th>Recovered Handled</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-tbody">
+                    <tr>
+                        <td colspan="7" class="text-center py-4">Loading users...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

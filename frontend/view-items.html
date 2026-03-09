@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Items | Lost2Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body style="background-color: #F7FAFC;">
+
+    <header>
+        <a href="index.html" class="brand">LOST2FOUND</a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li id="nav-report-lost"><a href="report-lost.html">Report Lost</a></li>
+            <li id="nav-report-found"><a href="report-found.html">Report Found</a></li>
+            <!-- Dashboard links handled dynamically or strictly to login -->
+            <li><a href="user-dashboard.html" id="nav-dashboard">Dashboard</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="page-header">
+            <h1 class="section-heading">Reported Items</h1>
+            <p class="sub-heading">Browse through all items currently looking for their owners.</p>
+        </div>
+
+        <h2 class="items-heading text-danger">
+            <span>🔍</span> Lost Items
+        </h2>
+        <div class="table-wrapper">
+            <table class="data-table" id="lost-items-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Location Lost</th>
+                        <th>Reporter</th>
+                        <th>Contact Email</th>
+                        <th>Status</th>
+                        <th>Report Date</th>
+                        <!-- Actions injected by JS for admin -->
+                    </tr>
+                </thead>
+                <tbody id="lost-items-tbody">
+                    <tr>
+                        <td colspan="9" class="text-center py-4">Loading lost items...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="items-heading text-info" style="margin-top: 4rem;">
+            <span>📣</span> Found Items
+        </h2>
+        <div class="table-wrapper">
+            <table class="data-table" id="found-items-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Location Found</th>
+                        <th>Reporter</th>
+                        <th>Contact Email</th>
+                        <th>Status</th>
+                        <th>Report Date</th>
+                        <!-- Actions injected by JS for admin -->
+                    </tr>
+                </thead>
+                <tbody id="found-items-tbody">
+                    <tr>
+                        <td colspan="9" class="text-center py-4">Loading found items...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/view-items.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+
+        // Handle dynamic logout if token exists
+        const logoutBtn = document.getElementById('logout-btn');
+        if (window.api.getToken()) {
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.api.logout();
+            });
+        } else {
+            // Re-route links to login if not authenticated
+            logoutBtn.textContent = 'Login';
+            logoutBtn.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>

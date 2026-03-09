@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Lost2Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="brand">LOST2FOUND</a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="view-items.html">All Items</a></li>
+            <li><a href="report-lost.html">Report Lost</a></li>
+            <li><a href="report-found.html">Report Found</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="welcome-msg">
+            <span>Welcome back, <span id="user-name-display">User</span>!</span>
+        </div>
+
+        <div class="quick-actions">
+            <a href="report-lost.html" class="btn btn-primary">Report Lost</a>
+            <a href="report-found.html" class="btn btn-info">Report Found</a>
+            <a href="view-items.html" class="btn btn-primary">Browse All Items</a>
+        </div>
+
+        <h2 class="dashboard-heading">My Dashboard</h2>
+
+        <div class="filter-toggle">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="lost">Lost</button>
+            <button class="filter-btn" data-filter="found">Found</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Item Name</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Upload Date</th>
+                        <th>Day of week</th>
+                        <th>Upload Time</th>
+                        <th>Status</th>
+                        <th>Recovered At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-items-tbody">
+                    <tr>
+                        <td colspan="10" class="text-center py-4">Loading your items...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/user-dashboard.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

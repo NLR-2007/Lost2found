@@ -1,0 +1,124 @@
+/* Reporting Forms */
+.form-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 20px;
+}
+
+.report-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.report-card-header {
+    background: var(--header-gradient);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.report-card-header.header-lost {
+    background: linear-gradient(135deg, var(--danger) 0%, var(--warning) 100%);
+}
+
+.report-card-header.header-found {
+    background: linear-gradient(135deg, var(--info) 0%, #63B3ED 100%);
+}
+
+.report-card-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.report-card-body {
+    padding: 2.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+input[type="file"].form-control {
+    padding: 0.6rem;
+    background: white;
+    cursor: pointer;
+    border-style: dashed;
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.02);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E2E8F0;
+}
+
+/* Nav toggles specific to forms */
+.form-nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.pill {
+    padding: 0.5rem 1.5rem;
+    background: white;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+.pill:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.pill.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 6px rgba(90, 103, 216, 0.3);
+}

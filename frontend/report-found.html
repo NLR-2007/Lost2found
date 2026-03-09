@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Found Item | Lost2Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="brand">LOST2FOUND</a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="user-dashboard.html">Dashboard</a></li>
+            <li><a href="view-items.html">All Items</a></li>
+            <li><a href="#" id="logout-nav">Logout</a></li>
+        </ul>
+    </header>
+
+    <main class="form-container">
+        <div class="form-nav-pills">
+            <a href="report-lost.html" class="pill">Report Lost Item</a>
+            <a href="report-found.html" class="pill active">Report Found Item</a>
+        </div>
+
+        <div class="report-card">
+            <div class="report-card-header header-found">
+                <h2>I Found Something</h2>
+                <p>Help an item find its way home</p>
+            </div>
+
+            <div class="report-card-body">
+                <div id="form-message" class="message-box"></div>
+
+                <form id="report-found-form" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item_name">Item Name *</label>
+                            <input type="text" id="item_name" name="item_name" class="form-control" required
+                                placeholder="e.g. Set of 3 Hostel Keys">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" class="form-control" required>
+                                <option value="">Select a category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Keys">Keys</option>
+                                <option value="Wallet/ID">Wallet / ID</option>
+                                <option value="Books">Books / Notes</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location Found *</label>
+                            <input type="text" id="location" name="location" class="form-control" required
+                                placeholder="e.g. Cafeteria Table 4">
+                        </div>
+                        <div class="form-group">
+                            <label for="college_id">Your College / Roll ID *</label>
+                            <input type="text" id="college_id" name="college_id" class="form-control" required
+                                placeholder="e.g. 2023CSB112">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="mobile">Your Mobile Number *</label>
+                        <input type="text" id="mobile" name="mobile" class="form-control" required minlength="10"
+                            maxlength="10" placeholder="10-digit mobile number">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="description">Additional Details</label>
+                        <textarea id="description" name="description" class="form-control"
+                            placeholder="Any specific marks, condition, etc."></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="image">Upload Photo (Optional, Max 5MB)</label>
+                        <input type="file" id="image" name="image" class="form-control"
+                            accept="image/jpeg, image/png, image/jpg">
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="user-dashboard.html" class="btn btn-outline">Cancel</a>
+                        <button type="submit" class="btn btn-info">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/report-found.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+        document.getElementById('logout-nav').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.api.logout();
+        });
+    </script>
+</body>
+
+</html>

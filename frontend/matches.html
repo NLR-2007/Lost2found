@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Suggestions | Lost2Found Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="admin-dashboard.html" class="brand">L2F ADMIN</a>
+        <button class="hamburger" id="hamburger-menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="admin-dashboard.html">Dashboard</a></li>
+            <li><a href="view-items.html">View Items</a></li>
+            <li><a href="matches.html" class="active">Matches</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="page-header">
+            <h2 class="section-heading">
+                <span>🎯</span> Intelligent Match Suggestions
+            </h2>
+            <p class="sub-heading">
+                Cross-referencing Open Lost and Found items by exact category and location match.
+            </p>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead class="standard-thead">
+                    <tr>
+                        <th class="text-danger">Lost Item</th>
+                        <th class="text-info">Found Item</th>
+                        <th>Category Match</th>
+                        <th>Location Match</th>
+                        <th>Admin Action</th>
+                    </tr>
+                </thead>
+                <tbody id="matches-tbody">
+                    <tr>
+                        <td colspan="5" class="text-center py-4">Checking for matches...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+        <footer>
+        <p>Lost 2 found developed by NLR GROUP OF COMPANY</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/matches.js"></script>
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('show');
+        });
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.api.logout();
+        });
+    </script>
+</body>
+
+</html>
